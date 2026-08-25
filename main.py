@@ -6,7 +6,7 @@ from statsbombpy import sb
 from mplsoccer import Pitch
 
 # Configuración básica de la página
-st.set_page_config(page_title="Visualizador de Pases", layout="centered"
+st.set_page_config(page_title="Visualizador de Pases", layout="centered")
 
 st.title("Visualizador de Pases en Vivo")
 st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSGm_KqdUINwCyCNhCosSh1VuJ0VgqCYs3Qd5ooAfaWDQ5n4Lc3DOtrx0&s=10", width=300)
@@ -21,7 +21,7 @@ def load_data(match_id=3857255):
     passes = events[variables]
     final = passes[passes['type'] == 'Pass'].dropna(subset=['location', 'pass_end_location']).copy()
     
-    final['x0'] = final.location.apply(lambda x: x[0])
+    final['x0'] = final.location.apply(lambda x: x[2])
     final['y0'] = final.location.apply(lambda x: x[1])
     final['x1'] = final.pass_end_location.apply(lambda x: x[0])
     final['y1'] = final.pass_end_location.apply(lambda x: x[1])
