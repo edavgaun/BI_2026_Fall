@@ -6,7 +6,7 @@ from statsbombpy import sb
 from mplsoccer import Pitch
 
 # Configuración básica de la página
-st.set_page_config(page_title="Visualizador de Pases", layout="centered")
+st.set_page_config(page_title="Visualizador de Pases", layout="centered"
 
 st.title("Visualizador de Pases en Vivo")
 st.image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSGm_KqdUINwCyCNhCosSh1VuJ0VgqCYs3Qd5ooAfaWDQ5n4Lc3DOtrx0&s=10", width=300)
