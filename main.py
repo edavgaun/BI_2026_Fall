@@ -21,7 +21,8 @@ def load_data(match_id=3857255):
     passes = events[variables]
     final = passes[passes['type'] == 'Pass'].dropna(subset=['location', 'pass_end_location']).copy()
     
-    final['x0'] = final.location.apply(lambda x: x[2])
+    # Indexing corrected: x[0] for X coordinate, x[1] for Y coordinate
+    final['x0'] = final.location.apply(lambda x: x[0])
     final['y0'] = final.location.apply(lambda x: x[1])
     final['x1'] = final.pass_end_location.apply(lambda x: x[0])
     final['y1'] = final.pass_end_location.apply(lambda x: x[1])
@@ -36,7 +37,7 @@ with st.spinner("Cargando datos de StatsBomb..."):
 min_minuto = int(final['minute'].min())
 max_minuto = int(final['minute'].max())
 
-minuto = st.slider("Selecciona el minuto:", min_value=min_minuto, max_value=max_minuto, value=0)
+minuto = st.slider("Selecciona el minuto:", min_value=min_minuto, max_value=max_minuto, value=min_minuto)
 
 # Gráfico con mplsoccer y seaborn
 pitch = Pitch(pitch_color='grass', line_color='white', stripe=True)
